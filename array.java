@@ -207,26 +207,82 @@
 //prefix sum
 //prefix array find krneka formula-prefix[i]=prefix[i-1]+arr[i]
 //sum of prefix array formula currsum= prefix[end]-prefix[start-1];
-class array{
-    public static void main(String args[]){
-        int maxsum=Integer.MIN_VALUE;
-        int number[]={2,4,6,8,10};
-        int currsum=0;
-        int prefix[]=new int[number.length];
-        prefix[0]=number[0];
-        for(int i=1;i<number.length;i++){
-            prefix[i]=prefix[i-1]+number[i];
-        }
-        for(int i=0;i<number.length;i++){
-            int start=i;
-            for(int j=i;j<number.length;j++){
-                int end=j;
-                currsum=start==0 ? prefix[end] :prefix[end]-prefix[start-1];
-                if(maxsum<currsum){
-                    maxsum=currsum;
-                }
-            }
-        } 
-        System.out.println("max sum:"+maxsum);
-    }
-}
+// class array{
+//     public static void main(String args[]){
+//         int maxsum=Integer.MIN_VALUE;
+//         int number[]={2,4,6,8,10};
+//         int currsum=0;
+//         int prefix[]=new int[number.length];
+//         prefix[0]=number[0];
+//         for(int i=1;i<number.length;i++){
+//             prefix[i]=prefix[i-1]+number[i];
+//         }
+//         for(int i=0;i<number.length;i++){
+//             int start=i;
+//             for(int j=i;j<number.length;j++){
+//                 int end=j;
+//                 currsum=start==0 ? prefix[end] :prefix[end]-prefix[start-1];
+//                 if(maxsum<currsum){
+//                     maxsum=currsum;
+//                 }
+//             }
+//         } 
+//         System.out.println("max sum:"+maxsum);
+//     }
+// }
+
+// output
+// max sum:30
+
+//kadane's algorithm
+
+// class array{
+//     public static void main(String args[]){
+//         int number[]= {2,4,6,8,10};
+//         int ms = Integer.MIN_VALUE;
+//         int cs=0;
+//         for(int i=0;i<number.length;i++){
+//             cs=cs+number[i];
+//             if(cs<0){
+//                 cs=0;
+//             }
+//             ms=Math.max(cs,ms);
+//         }
+//         System.out.println("our max subarray sunm is:"+ms);
+//     }
+// }
+// // output
+// // max sum:30
+
+// class array{
+
+// public static void main(String args[]){
+//     int number[]={3,4,6,1,2,4,7,4,8,2};
+//     int n=number.length;
+//     //calculate left max boundary - array
+//      int leftmax[] = new int[n];
+//      leftmax[0]=number[0];
+//      for(int i=1;i<n;i++){
+//         leftmax[i] = Math.max(number[i],leftmax[i-1]);
+//      }
+
+//     //calculte right max boundary - array
+//    int rightMax[]= new int[n];
+//    rightMax[n-1]=number[n-1];
+//    for(int i=n-2;i>=0;i--){
+//     rightMax[i] = Math.max(number[i],rightMax[i+1]);
+//    }
+//     //loop
+//  int trappedWater = 0;
+//  for(int i=0;i<n;i++){
+//     int waterlevel=Math.min(leftmax[i],rightMax[i]);
+//     trappedWater+=waterlevel-number[i];
+//  }
+//  System.out.println(trappedWater);
+
+//     //trapped water=waterlevel - height[i]
+// }
+// }
+
+// output
+// 14
