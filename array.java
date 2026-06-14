@@ -154,3 +154,79 @@
 // (2,3)(2,4)(2,5)
 // (3,4)(3,5)
 // (4,5)
+
+
+//printsubarray
+// class array{
+//     public static void main(String args[]){
+//         int ts=0;
+//         int number[]={1,3,5,7,9};
+//         for(int i=0;i<number.length;i++){
+//            int start=  i;
+//             for(int j=i;j<number.length;j++){
+//                 int end = j;
+//                 for(int k=i;k<j;k++){
+//                     System.out.print(number[k]+" ");
+//                 }
+//                 ts++;
+//                 System.out.println();
+
+//             }
+//             System.out.println();
+//         }
+//         System.out.println("sum:"+ts);
+//     }
+// }
+// output
+// 1 
+// 1 3 
+// 1 3 5 
+// 1 3 5 7 
+
+
+// 3 
+// 3 5 
+// 3 5 7 
+
+
+// 5 
+// 5 7 
+
+
+// 7 
+
+
+
+//sum:15
+
+
+//max subarray sum(brute force,prefix sum,kadane.s algorithm)
+//brute force
+
+
+//prefix sum
+//prefix array find krneka formula-prefix[i]=prefix[i-1]+arr[i]
+//sum of prefix array formula currsum= prefix[end]-prefix[start-1];
+class array{
+    public static void main(String args[]){
+        int maxsum=Integer.MIN_VALUE;
+        int number[]={2,4,6,8,10};
+        int currsum=0;
+        int prefix[]=new int[number.length];
+        prefix[0]=number[0];
+        for(int i=1;i<number.length;i++){
+            prefix[i]=prefix[i-1]+number[i];
+        }
+        for(int i=0;i<number.length;i++){
+            int start=i;
+            for(int j=i;j<number.length;j++){
+                int end=j;
+                currsum=start==0 ? prefix[end] :prefix[end]-prefix[start-1];
+                if(maxsum<currsum){
+                    maxsum=currsum;
+                }
+            }
+        } 
+        System.out.println("max sum:"+maxsum);
+    }
+}
