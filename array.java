@@ -286,3 +286,25 @@
 
 // output
 // 14
+
+//buy and sell
+// class array{
+//     public static void main(String agrs[]){
+//         int prices[]={7,1,5,3,6,4};
+//         int buyprice=Integer.MAX_VALUE;
+//         int maxprice=0;
+//         for(int i=0;i<prices.length;i++){
+//             if(buyprice<prices[i]){
+//                 int profit = prices[i]-buyprice;
+//                 maxprice=Math.max(maxprice,profit);
+//             }
+//             else{
+//                 buyprice=prices[i];
+//             }
+//         }
+//         System.out.println("profit:"+maxprice);
+//     }
+// }
+// output
+// profit:5
+
