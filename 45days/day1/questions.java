@@ -206,3 +206,54 @@ class Main {
    }
    
 }
+
+//sorting
+
+//selection sorting
+//[64, 25, 12, 22, 11]
+
+// Find the smallest element (11) and swap it with the first element.
+// → [11, 25, 12, 22, 64]
+class Main {
+    public static void selectionSort(int arr[]){
+        int n=arr.length;
+        for(int i=0;i<n-1;i++){
+            int minidx=i;
+            
+            for(int j=i+1;j<n;j++){
+                if(arr[j]<arr[minidx]){
+                    minidx=j;
+                }
+            
+            }
+             int temp=arr[minidx];
+                arr[minidx]=arr[i];
+                arr[i]=temp;
+        }
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public static void main(String[] args) {
+        int arr[]={2,6,4,3,1};
+        selectionSort(arr);
+        
+    }
+}
+
+//bubble sort
+//5 > 4 → swap → [4, 5, 3, 2, 1]
+
+
+//insertion sort
+// Array: [5, 4, 3, 2, 1]
+
+// 4 ko 5 se compare karo → 4 chota hai → insert
+// [4, 5, 3, 2, 1]
+// 3 ko 5 aur 4 se compare karo → insert
+// [3, 4, 5, 2, 1]
+// 2 ko sahi position par insert karo
+// [2, 3, 4, 5, 1]
+// 1 ko insert karo
+// [1, 2, 3, 4, 5]
+
