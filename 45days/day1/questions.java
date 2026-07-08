@@ -13,8 +13,6 @@
 // }
 
 //palindrome
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
 import java.util.*;
 class Main {
     public static void main(String[] args) {
@@ -256,4 +254,6 @@ class Main {
 // [2, 3, 4, 5, 1]
 // 1 ko insert karo
 // [1, 2, 3, 4, 5]
+
+
 
