@@ -177,3 +177,80 @@ class Main{
         System.out.print("index of the element: "+idx);
     }
 }
+
+//Find the number that appears once, and the other numbers twice
+class Main {
+    public static void getSingleElement(int arr[]){
+        int xor=0;
+        for(int i=0;i<arr.length;i++){
+            xor=xor^arr[i];
+        }
+        System.out.print(xor);
+    }
+    public static void main(String[] args) {
+      int arr[]={4,1,1,2,2,3,3};
+      getSingleElement(arr);
+    }
+}
+
+//Length of the longest subarray with zero Sum
+import java.util.*;
+class Main{
+    public static void largestsubarray(int arr[]){
+        int n=arr.length;
+        int maxLength=0;
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                int currsum=0;
+                for(int b=i;b<=j;b++){
+                    currsum=currsum+arr[b];
+                }
+                if(currsum==0){
+                    maxLength=Math.max(maxLength,j-i+1);
+                }
+            }
+        }
+        System.out.print(maxLength);
+    }
+    public static void main(String agr[]){
+        int arr[]={9, -3, 3, -1, 6, -5};
+        
+        largestsubarray(arr);
+    }
+}
+
+//dutch national flag algorithm
+import java.util.*;
+
+class Main{
+    public static void DNFA(int arr[]){
+        int low=0,mid=0,high=arr.length-1;
+        while(mid<=high){
+            if(arr[mid]==0){
+                int temp=arr[low];
+                arr[low]=arr[mid];
+                arr[mid]=temp;
+                low++;
+                mid++;
+            }
+            
+            else if(arr[mid]==1){
+               mid++;
+            }
+            else{
+                 int temp=arr[high];
+                arr[high]=arr[mid];
+                arr[mid]=temp;
+                mid++;
+            }
+            
+        }
+    }
+    public static void main(String arg[]){
+        int arr[]={1,0,0,1,2,2};
+       DNFA(arr);
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+ " ");
+        }
+    }
+}
