@@ -453,3 +453,81 @@ class Main{
 // Input: matrix=[[1,1,1],[1,0,1],[1,1,1]]
 // Output: [[1,0,1],[0,0,0],[1,0,1]]
 // Explanation: Since matrix[2][2]=0.Therfore the 2nd column and 2nd row wil be set to 0.
+import java.util.*;
+
+class Main {
+
+    public static void main(String args[]) {
+
+        int matrix[][] = {
+            {0, 1, 2, 0},
+            {3, 4, 5, 2},
+            {1, 3, 1, 5}
+        };
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        boolean firstrowzero = false;
+        boolean firstcolzero = false;
+
+        // Check first row
+        for (int j = 0; j < n; j++) {
+            if (matrix[0][j] == 0) {
+                firstrowzero = true;
+                break;
+            }
+        }
+
+        // Check first column
+        for (int i = 0; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                firstcolzero = true;
+                break;
+            }
+        }
+
+        // Mark rows and columns
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+
+        // Set zero using markers
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        // Zero first row
+        if (firstrowzero) {
+            for (int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
+            }
+        }
+
+        // Zero first column
+        if (firstcolzero) {
+            for (int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+
+        // Print Matrix
+        System.out.println("Final Matrix:");
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
