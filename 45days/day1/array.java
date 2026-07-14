@@ -254,3 +254,202 @@ class Main{
         }
     }
 }
+
+
+//Find the Majority Element that occurs more than N/2 times
+class Main {
+    public static int majorityElement(int arr[]){
+        int n=arr.length;
+        int cnt=0,el=0;
+        for(int i=0;i<n;i++){
+            if(cnt==0){
+                cnt=1;
+                el=arr[i];
+            }
+            else if(el==arr[i]){
+                cnt++;
+            }
+            else{
+                cnt--;
+            }
+        }
+        
+        int cnt1=0;
+        for(int i=0;i<n;i++){
+          if(arr[i]==el){
+              cnt1++;
+          }
+        }
+        
+         if(cnt1>=(n/2)){
+                return el;
+            }
+            return -1;
+    }
+    public static void main(String[] args) {
+        int arr[]={2,5,4,6,5,5,5,7};
+        int res=majorityElement(arr);
+        System.out.print(res);
+    }
+}
+
+// Kadane's Algorithm : Maximum Subarray Sum in an Array
+// Problem Statement: Given an integer array nums, find the subarray with the largest sum and return the sum of the elements present in that subarray.
+// A subarray is a contiguous non-empty sequence of elements within an array.
+
+import java.util.*;
+class Main{
+    public static long kadanes(int arr[]){
+        long max=Long.MIN_VALUE;
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+            if(sum>max){
+                max=sum;
+            }
+            if(sum<0){
+                sum=0;
+            }
+        }
+        return max;
+    }
+    public static void main(String args[]){
+        int arr[]={2, 3, 5, -2, 7, -4};
+        long res=kadanes(arr);
+        System.out.print(res);
+    }
+}
+
+//Stock Buy And Sell
+class Main{
+    public static int maxprofit(int profits[]){
+        int minprice=profits[0];
+        int maxprofit=0;
+        for(int i=1;i<profits.length;i++){
+            if(profits[i]<minprice){
+                minprice=profits[i];
+            }
+            int profit=profits[i]-minprice;
+            
+            if(profit>maxprofit){
+                maxprofit=profit;
+            }
+            
+        }
+        return maxprofit;
+    }
+    public static void main(String args[]){
+        int profits[]={4,1,2,4,6};
+        int res=maxprofit(profits);
+        System.out.println(res);
+    }
+}
+
+//Rearrange Array Elements by Sign
+class main{
+    public static int[] rearrangesign(int arr[]){
+        int n=arr.length;
+        int posidx=0;
+        int nevidx=1;
+        int ans[]=new int[n];
+        for(int i=0;i<n;i++){
+            if(arr[i]>0){
+                ans[posidx]=arr[i];
+                posidx+=2;
+            }
+            else{
+                ans[nevidx]=arr[i];
+                nevidx+=2;
+            }
+        }
+        return ans;
+    }
+    public static void main(String arg[]){
+        int arr[]={2,6,-3,7,-3};
+        int res[]=rearrangesign(arr);
+        for(int i=0;i<res.length;i++){
+            System.out.print(res[i]+" ");
+        }
+    }
+}
+
+//next_permutation : find next lexicographically greater permutation
+class Main{
+    public static void nextpermutation(int arr[]){
+        int n= arr.length;
+        int pivot=-1;
+        for(int i=n-2;i>=0;i--){
+            if(arr[i]<arr[i+1]){
+                pivot=i;
+                break;
+            }
+        }
+            if(pivot==-1){
+                reverse(arr,0,n-1);
+                return;
+            }
+            
+            for(int i=n-1;i>pivot;i--){
+                if(arr[i]>arr[pivot]){
+                    swap(arr,i,pivot);
+                    break;
+                }
+            }
+            reverse(arr,pivot+1,n-1);
+        
+    }
+    public static void reverse(int arr[],int start,int end){
+       while(start<end){
+            swap(arr,start,end);
+        start++;
+        end--;
+       }
+    }
+    public static void swap(int arr[],int start,int end){
+        int temp=arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
+        
+    }
+    public static void main(String arg[]){
+        int arr[]={1,3,2};
+        nextpermutation(arr);
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+//Leaders in an Array
+//Input:
+//  arr = [10, 22, 12, 3, 0, 6]  
+// Output:
+//  22 12 6  
+
+import java.util.*;
+class Main{
+    public static void main(String arg[]){
+        int arr[]={10, 22, 12, 3, 0, 6};
+        ArrayList<Integer> leader=new ArrayList<>();
+        int max=arr[arr.length-1];
+        leader.add(max);
+        
+        for(int i=arr.length-2;i>=0;i--){
+          if(arr[i]>max){
+                leader.add(arr[i]);
+            max=arr[i];
+          }
+        }
+        
+        Collections.reverse(leader);
+        
+        
+        for(int i=0;i<leader.size();i++){
+            System.out.print(leader.get(i)+" ");
+        }
+    }
+}
+
+// Input: matrix=[[1,1,1],[1,0,1],[1,1,1]]
+// Output: [[1,0,1],[0,0,0],[1,0,1]]
+// Explanation: Since matrix[2][2]=0.Therfore the 2nd column and 2nd row wil be set to 0.
